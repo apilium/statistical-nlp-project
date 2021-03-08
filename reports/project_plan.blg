@@ -3,6 +3,10 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: project_plan.aux
 The style file: abbrvnat.bst
 Database file #1: ./citations/sources.bib
+Illegal end of database file---line 19 of file ./citations/sources.bib
+ : @
+ :  
+I'm skipping whatever remains of this entry
 You've used 1 entry,
             2773 wiz_defined-function locations,
             601 strings with 4957 characters,
@@ -44,3 +48,4 @@ warning$ -- 0
 while$ -- 6
 width$ -- 0
 write$ -- 24
+(There was 1 error message)

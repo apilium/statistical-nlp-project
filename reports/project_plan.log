@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.3)  8 MAR 2021 11:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.3)  8 MAR 2021 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -216,38 +216,59 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 24.
- (./project_plan.bbl
+ [1
+
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+(./project_plan.bbl
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 16.
-) [1
+) [2
 
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./project_plan
-.aux)
+] (./project_plan.aux)
 Package rerunfilecheck Info: File `project_plan.out' has not changed.
 (rerunfilecheck)             Checksum: 87DEAAB5A2B5400F114A9B52DD2F4646;92.
  ) 
 Here is how much of TeX's memory you used:
- 4770 strings out of 479485
- 73956 string characters out of 5875916
- 372312 words of memory out of 5000000
- 21725 multiletter control sequences out of 15000+600000
- 539849 words of font info for 45 fonts, out of 8000000 for 9000
+ 4773 strings out of 479485
+ 73983 string characters out of 5875916
+ 373312 words of memory out of 5000000
+ 21726 multiletter control sequences out of 15000+600000
+ 540157 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,6n,72p,280b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/tex
-live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmti10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
-fb>
-Output written on project_plan.pdf (1 page, 107138 bytes).
+ 66i,6n,72p,424b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
+live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2020/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2020/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr9.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
+fb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on project_plan.pdf (2 pages, 123761 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
+ 68 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 6 named destinations out of 1000 (max. 500000)
  17 words of extra memory for PDF output out of 10000 (max. 10000000)
 
