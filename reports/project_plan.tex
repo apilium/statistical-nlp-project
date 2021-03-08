@@ -40,6 +40,9 @@ The Cornell University NEWSROOM dataset \cite{dataset} consists of 1.3 million n
 NOTE-TO-SELF: \\
 \textbf{Extractive summarization} generates verbatim summarization. It takes subset of the sentences in the original text, and attempts to identify important sections. \cite{dataset}\\
 \textbf{Abstractive summarization} interprets the original text, and creates a new, shorter text that attempts to have the same amount of relevant information.\\
+\textbf{Extractive Fragment Coverage} explains how many words in the summary are from the article. Many words from article in the summary means high coverage.\\
+\textbf{Extractive fragment density} explains average length of extractive fragment. Coverage can be high, but if the consecutive words (fragments) are small, then it might present new information (be more abstractive). So high density means, that there's long fragments from original text.\\
+\textbf{compression ratio} defines the proportion of article word amount and summary word amount. \\
 
 Written by humans with purpose of summarization.
 Design new benchmark. \\
@@ -55,6 +58,14 @@ Dataset was created by scraping the website for content and using summaries in t
 
 In the paper \cite{dataset} the dataset is also analysed to understand what kind of summarization techniques are used.
 
+\clearpage
+\section{State of art }
+
+Often, for the baseline precision Lede-3 is used. It's automatic summarization strategy that copies first $n$ words of the first sentence and uses it as summary. In our work, we will be using this as baseline also.
+
+Current state of art models in text summarization can be classified to fully extractive, fully abstractive or mixed models. In the study \cite{dataset} ROUGE-1, ROUGE-2 and ROUGE-L $F_1$ score variants were used to account for different summary lengths. In our work we will also be using ROUGE scores, as BLEU score requires multiple human annotated references, and we only have 1.
+
+In the leaderboard it seems that mixed models perform the best, then comes the extractive and abstractive is the least efficient.
 
 % Import bibliography file %
 \bibliography{./citations/sources.bib}
