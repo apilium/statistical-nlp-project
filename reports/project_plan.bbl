@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -14,5 +14,12 @@ M.~Grusky, M.~Naaman, and Y.~Artzi.
   Technologies}, pages 708--719, New Orleans, Louisiana, June 2018. Association
   for Computational Linguistics.
 \newblock URL \url{http://aclweb.org/anthology/N18-1065}.
+
+\bibitem[Sandhaus(2008)]{ny_dataset}
+E.~Sandhaus.
+\newblock The new york times annotated corpus.
+\newblock In \emph{The New York Times Annotated Corpus LDC2008T19}. Linguistic
+  Data Consortium, 2008.
+\newblock URL \url{https://doi.org/10.35111/77ba-9x74}.
 
 \end{thebibliography}

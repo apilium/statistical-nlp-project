@@ -34,8 +34,24 @@
 \clearpage
 \section{The dataset}
 
-The Cornell University NEWSROOM dataset \cite{dataset} consists of 1.3 million news articles and summaries between the yeras 1998 and 2017. It contains articles from 38 major publications and the summarization strategies combine both extraction and abstraction. The Newsroom website (summari.es) contains various different tools for analyzing the large article database. The dataset is \\
+The Cornell University NEWSROOM dataset \cite{dataset} consists of 1.3 million news articles and summaries between the years 1998 and 2017. It contains articles from 38 major publications and the summarization strategies combine both extraction and abstraction. The Newsroom website (summari.es) contains various different tools for analyzing the large article database. The dataset is written by humans with purpose of summarization. Dataset was created by scraping the website for content and using summaries in the HTML metadata. These metadata summaries were created to be found from search engines and social medias. Top news websites gathered from Alexa.com were used. \\
 
+\noindent
+We will be filtering the dataset \cite{dataset} to use extractive summaries, as our model is extractive. Another option for training dataset would be the New York Times corpus, which contains over 650 000 manually summarized news articles. These summarizations were done afterwards by library scientists. \cite{ny_dataset} 
+
+
+\section{State of art }
+
+Often, for the baseline precision Lede-3 is used. It's automatic summarization strategy that copies first $n$ words of the first sentence and uses it as summary. In our work we will be using this as a baseline also. Current state of art models in text summarization can be classified to fully extractive, fully abstractive or mixed models. In the study \cite{dataset} ROUGE-1, ROUGE-2 and ROUGE-L $F_1$ score variants were used to account for different summary lengths. In our work we will also be using ROUGE and BLEU scores for testing. We can test on both datasets \cite{dataset} \cite{ny_dataset}\\
+
+\noindent
+In the leaderboard it seems that mixed models perform the best, then comes the extractive and abstractive is the least efficient. TextRank was one of the best models in the study \cite{dataset} and it will also be used as comparison for our model.
+The very least goal is to achieve better results than the Lede-3, but it will be interesting to see how well the extractive BERT performs ranks compared to TextRank. 
+
+% Import bibliography file %
+\bibliography{./citations/sources.bib}
+	
+	
 \noindent
 NOTE-TO-SELF: \\
 \textbf{Extractive summarization} generates verbatim summarization. It takes subset of the sentences in the original text, and attempts to identify important sections. \cite{dataset}\\
@@ -43,31 +59,4 @@ NOTE-TO-SELF: \\
 \textbf{Extractive Fragment Coverage} explains how many words in the summary are from the article. Many words from article in the summary means high coverage.\\
 \textbf{Extractive fragment density} explains average length of extractive fragment. Coverage can be high, but if the consecutive words (fragments) are small, then it might present new information (be more abstractive). So high density means, that there's long fragments from original text.\\
 \textbf{compression ratio} defines the proportion of article word amount and summary word amount. \\
-
-Written by humans with purpose of summarization.
-Design new benchmark. \\
-
-Document Understanding Conference: Can be used as test set. It has multiple reference summaries for each article. High quality.
-Small data. 
-
-Previously simulated summaries were used as training data, e.g. headlines. 
-
-Other mentionable dataset is new york times corpus which is the largest summarization dataset currently available. All articles from The New York times. Several hunder thousand articles written between 1987-2007. Summaries written by library scientists. Biased towards extractive strategies.\\
-
-Dataset was created by scraping the website for content and using summaries in the HTML metadata. These metadata summaries were created to be found from search engines and social medias. Top news websites gathered from Alexa.com were used. 
-
-In the paper \cite{dataset} the dataset is also analysed to understand what kind of summarization techniques are used.
-
-\clearpage
-\section{State of art }
-
-Often, for the baseline precision Lede-3 is used. It's automatic summarization strategy that copies first $n$ words of the first sentence and uses it as summary. In our work, we will be using this as baseline also.
-
-Current state of art models in text summarization can be classified to fully extractive, fully abstractive or mixed models. In the study \cite{dataset} ROUGE-1, ROUGE-2 and ROUGE-L $F_1$ score variants were used to account for different summary lengths. In our work we will also be using ROUGE scores, as BLEU score requires multiple human annotated references, and we only have 1.
-
-In the leaderboard it seems that mixed models perform the best, then comes the extractive and abstractive is the least efficient.
-
-% Import bibliography file %
-\bibliography{./citations/sources.bib}
-	
 \end{document}
