@@ -27,6 +27,36 @@
 \end{abstract}
 
 \clearpage
+\section{Introduction}
+Automatic summarization is the process of shortening a set of data computationally, to create a subset (a summary) that represents the most important or relevant information within the original content. There are two main approaches to automatic summarization (independently of the application domain, e.g. text, images, video etc.):
+\begin{itemize}
+	\item Extraction-based or extractive summarization 
+	\item Abstraction-based or abstractive summarization
+\end{itemize}
+
+When it comes to text documents, summarization is closely related to data compression and information understanding. The ability to produce coherent, well-structured summaries has the potential to transform efficiently the way that discovery systems work, as well as help human readers in skimming large datasets of text documents. That is why automatic summarization is considered one of the most important, yet least solved, tasks in NLP and a method that will transform the way people consume information on the Internet. In conclusion, applying text summarization reduces reading time, accelerates information retrieval and increases the amount of useful, dense information. In our case, we will deal with extractive summarization where a system produces summaries by choosing a subset of the initial text.
+
+\section{Background}
+The first summarization techniques go back already more than 50 years to Luhn’s and Edmundson’s seminal papers on automatic summarization (1958 and 1969 respectively, \cite{textmining1958}, \cite{automaticextracting}). Early work in the field dealt with single document summarization (news story, scientific articles etc.) Later, multi document summarization was applied in big data clusters to provide a coherent and brief digest to the users. \\
+
+\noindent
+A typical flow of an abstractive summarization system \cite{summarizing} consists of:
+\begin{itemize}
+	\item Interpretation to obtain an intermediate representation
+	\item Transformation into a summary representation (sentence-level ranking)
+	\item Generation based on semantically important sentences
+\end{itemize}
+
+A significant part of the intermediate representation is finding the most representative words of the text. The most common topic representation approaches \cite{survey} include:
+\begin{itemize}
+	\item Topic words 
+	\item Frequency-based approaches (TF-IDF, word probability)
+	\item Latent Semantic Analysis (LSA)
+	\item Bayesian Topic Models (LDA)
+\end{itemize}
+
+Lately, neural modeling and huge pre-trained models have dominated the field \cite{neuralextractive}.
+
 \section{The dataset}
 
 The Cornell University NEWSROOM dataset \cite{dataset} consists of 1.3 million news articles and summaries between the years 1998 and 2017. It contains articles from 38 major publications and the summarization strategies combine both extraction and abstraction. The Newsroom website (summari.es) contains various different tools for analyzing the large article database. The dataset is written by humans with purpose of summarization. Dataset was created by scraping the website for content and using summaries in the HTML metadata. These metadata summaries were created to be found from search engines and social medias. Top news websites gathered from Alexa.com were used. \\
