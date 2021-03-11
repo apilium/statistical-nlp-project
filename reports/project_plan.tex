@@ -91,6 +91,9 @@ Often, for the baseline precision Lede-3 is used. It's automatic summarization s
 In the leaderboard it seems that mixed models perform the best, then comes the extractive and abstractive is the least efficient. TextRank was one of the best models in the study \cite{dataset} and it will also be used as comparison for our model.
 The very least goal is to achieve better results than the Lede-3, but it will be interesting to see how well the extractive BERT performs ranks compared to TextRank. 
 
+\section{Project plan}
+
+We will be using Google Colabs resources for computing. It's convenient because we can store data in common cloud space, Google Drive, and Colab has a lot of computing power. We will be using BERT Extractive Summarizer -package for the actual modeling. The training data will be extractive data filtered from the NEWSROOM dataset \cite{dataset}. For evaluation, we will be using ROUGE and BLEU scores with the NEWSROOM dataset, and possible also New York Times Corpus dataset \cite{ny_dataset}. We will be comparing our result with the previously mentioned baseline Lede-3, and possibly also to more advanced TextRank. 
 
 % Import bibliography file %
 \bibliography{citations/sources.bib}
