@@ -1,9 +1,31 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Allahyari et~al.(2017)Allahyari, Pouriyeh, Assefi, Safaei, Trippe,
+  Gutierrez, and Kochut]{survey}
+M.~Allahyari, S.~A. Pouriyeh, M.~Assefi, S.~Safaei, E.~D. Trippe, J.~B.
+  Gutierrez, and K.~Kochut.
+\newblock Text summarization techniques: {A} brief survey.
+\newblock \emph{CoRR}, abs/1707.02268, 2017.
+\newblock URL \url{http://arxiv.org/abs/1707.02268}.
+
+\bibitem[Devlin et~al.(2019)Devlin, Chang, Lee, and Toutanova]{devlin2019bert}
+J.~Devlin, M.-W. Chang, K.~Lee, and K.~Toutanova.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding, 2019.
+\newblock URL \url{https://arxiv.org/abs/1810.04805}.
+
+\bibitem[Edmundson(1969)]{automaticextracting}
+H.~P. Edmundson.
+\newblock New methods in automatic extracting.
+\newblock \emph{J. ACM}, 16\penalty0 (2):\penalty0 264–285, Apr. 1969.
+\newblock ISSN 0004-5411.
+\newblock \doi{10.1145/321510.321519}.
+\newblock URL \url{https://doi.org/10.1145/321510.321519}.
 
 \bibitem[Grusky et~al.(2018)Grusky, Naaman, and Artzi]{dataset}
 M.~Grusky, M.~Naaman, and Y.~Artzi.
@@ -15,11 +37,35 @@ M.~Grusky, M.~Naaman, and Y.~Artzi.
   for Computational Linguistics.
 \newblock URL \url{http://aclweb.org/anthology/N18-1065}.
 
+\bibitem[Jones(1998)]{summarizing}
+K.~S. Jones.
+\newblock Automatic summarising: factors and directions.
+\newblock \emph{CoRR}, cmp-lg/9805011, 1998.
+\newblock URL \url{http://arxiv.org/abs/cmp-lg/9805011}.
+
+\bibitem[Liu(2019)]{liu2019finetune}
+Y.~Liu.
+\newblock Fine-tune bert for extractive summarization, 2019.
+\newblock URL \url{https://arxiv.org/abs/1903.10318}.
+
+\bibitem[Luhn(1958)]{textmining1958}
+H.~P. Luhn.
+\newblock The automatic creation of literature abstracts.
+\newblock \emph{IBM Journal of Research and Development}, 2\penalty0 (2), 1958.
+\newblock URL \url{http://www.research.ibm.com/journal/rd/022/luhn.pdf}.
+
 \bibitem[Sandhaus(2008)]{ny_dataset}
 E.~Sandhaus.
 \newblock The new york times annotated corpus.
 \newblock In \emph{The New York Times Annotated Corpus LDC2008T19}. Linguistic
   Data Consortium, 2008.
 \newblock URL \url{https://doi.org/10.35111/77ba-9x74}.
+
+\bibitem[Zhong et~al.(2019)Zhong, Liu, Wang, Qiu, and Huang]{neuralextractive}
+M.~Zhong, P.~Liu, D.~Wang, X.~Qiu, and X.~Huang.
+\newblock Searching for effective neural extractive summarization: What works
+  and what's next.
+\newblock \emph{CoRR}, abs/1907.03491, 2019.
+\newblock URL \url{http://arxiv.org/abs/1907.03491}.
 
 \end{thebibliography}
