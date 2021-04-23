@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\graphicspath{ {./images/} }
+%Includes References in the table of contents%
+\usepackage[nottoc]{tocbibind}
+
+\usepackage[square, numbers]{natbib}
+\bibliographystyle{abbrvnat}
+
+
+\title{Team 26: Text summarization}
+
+
+
+\begin{document}
+	
+\maketitle
+
+\begin{abstract}
+\noindent
+	In our project, we have decided to create text summarizer with BERT. 
+	There is already a Bert Extractive Summarizer -package. It's based on following article: \href{https://arxiv.org/ftp/arxiv/papers/1906/1906.04165.pdf}{https://arxiv.org/ftp/arxiv/papers/1906/1906.04165.pdf}
+	This package is intended for lecture-summarization, and our goal is to extend and fine-tune this model for news or scientific articles.
+	Even though foundational work is already done for the package, there's still much to customize such as tokenizer and model. 
+	Our target language is english. Summarization tools such as Bilingual Evaluation Understudy (BLEU) and Recall-Oriented Understudy for Gisting Evaluation (ROUGE) are available, and part of the project is to try to evaluate the texts automatically and manually.	
+\end{abstract}
+
+\clearpage
+\section{Introduction}
+Automatic summarization is the process of shortening a set of data computationally, to create a subset (a summary) that represents the most important or relevant information within the original content. There are two main approaches to automatic summarization (independently of the application domain, e.g. text, images, video etc.):
+\begin{itemize}
+	\item Extraction-based or extractive summarization 
+	\item Abstraction-based or abstractive summarization
+\end{itemize}
+
+When it comes to text documents, summarization is closely related to data compression and information understanding. The ability to produce coherent, well-structured summaries has the potential to transform efficiently the way that discovery systems work, as well as help human readers in skimming large datasets of text documents. That is why automatic summarization is considered one of the most important, yet least solved, tasks in NLP and a method that will transform the way people consume information on the Internet. In conclusion, applying text summarization reduces reading time, accelerates information retrieval and increases the amount of useful, dense information. In our case, we will deal with extractive summarization where a system produces summaries by choosing a subset of the initial text.
+
+\section{Background}
+The first summarization techniques go back already more than 50 years to Luhn’s and Edmundson’s seminal papers on automatic summarization (1958 and 1969 respectively, \cite{textmining1958}, \cite{automaticextracting}). Early work in the field dealt with single document summarization (news story, scientific articles etc.) Later, multi document summarization was applied in big data clusters to provide a coherent and brief digest to the users. \\
+
+
+% Import bibliography file %
+\bibliography{citations/sources.bib}
+
+
+\end{document}
