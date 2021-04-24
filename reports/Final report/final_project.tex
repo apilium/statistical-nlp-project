@@ -4,12 +4,18 @@
 \graphicspath{ {./images/} }
 %Includes References in the table of contents%
 \usepackage[nottoc]{tocbibind}
+\usepackage{amsmath}
 
 \usepackage[square, numbers]{natbib}
 \bibliographystyle{abbrvnat}
 
 
 \title{Team 26: Text summarization}
+
+\newcommand{\bertlarge}{$\text{BERT}_{LARGE}$ }
+\newcommand{\bertbase}{$\text{BERT}_{BASE}$ }
+\newcommand{\gptmedium}{$\text{GPT-2}_{MEDIUM}$ }
+\newcommand{\gptlarge}{$\text{GPT-2}_{LARGE}$ }
 
 
 
@@ -40,13 +46,60 @@ When it comes to text documents, summarization is closely related to data compre
 The first summarization techniques go back already more than 50 years to Luhn’s and Edmundson’s seminal papers on automatic summarization (1958 and 1969 respectively, \cite{textmining1958}, \cite{automaticextracting}). Early work in the field dealt with single document summarization (news story, scientific articles etc.) Later, multi document summarization was applied in big data clusters to provide a coherent and brief digest to the users. \\
 
 
+\section{Evaluation and results}
+
+Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 150, which resulted in tolerable running times (< 15 minutes). 
+
+\noindent
+Two different BERT models were tested, \bertlarge and \bertbase. These models were compared against baseline model Lede-3 and GPT-2. GPT-2 was chosen to be compared against BERT models, because in the original study \cite{extractive_bert} they noticed that BERT should be generating more representative embeddings of the sentences. Also \gptlarge was chosen as one model to be evaluated. \gptlarge has 774 million parameters, which is roughly the double of parameters in \bertlarge and \gptmedium. Also GPT-2-XL and new GPT-NEO (GPT-3 replication) would've been interesting comparisons, but unfortunately they were too large to fit on GPU.\\
+
+\noindent
+Tthe python package bert-extractive-summarizer \cite{extractive_bert} uses only sentences from original text, and the amount of sentences is defined by either fixed ratio, or amount of sentences. In this case the ratio was defaulted to 0.2, which means that we use 20\% of the sentences from original text. We can calculate empirical distribution of the ratios seen in reference summaries as displayed in Figure \ref{fig:empirical_ratio}.
+
+
+\noindent
+\begin{figure}[h!]
+	\centering
+	\hspace*{-3cm}
+	\includegraphics[scale=0.55]{images/empirical_ratio.png}
+	\caption{Distribution of observed ratios in the data}
+	\label{fig:empirical_ratio}
+\end{figure}
+
+\noindent
+Here we can see that the mean is around 0.15. We can also plot what length of sentences there are as in following Figure \ref{fig:empirical_lengths}.
+
+\noindent
+\begin{figure}[h]
+	\centering
+	\hspace*{-3cm}
+	\includegraphics[scale=0.55]{empirical_lengths.png}
+	\caption{Distribution of observed ratios in the data}
+	\label{fig:empirical_lengths}
+\end{figure}
+
+\noindent
+Here we actually see, that there are multiple summaries which have sentence length 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text.
+
+
+\noindent
+\hspace*{-3cm}
+\includegraphics[scale=0.55]{images/rouge1.png}\\
+Heres image\\
+\noindent
+\hspace*{-3cm}
+\includegraphics[scale=0.55]{images/rouge2.png}
+
+
+\noindent
+\hspace*{-3cm}
+\includegraphics[scale=0.55]{images/rougel.png}
+
+
+
+
 % Import bibliography file %
 \bibliography{citations/sources.bib}
 
-\section{Evaluation and results}
-
-
-
-
-
 \end{document}
+

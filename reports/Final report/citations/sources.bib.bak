@@ -1,0 +1,17 @@
+// Remember to set author in double brackets! {{}}
+
+
+@inproceedings{dataset,
+  author    = {Grusky, Max and Naaman, Mor and Artzi, Yoav},
+  title     = {NEWSROOM: A Dataset of 1.3 Million Summaries
+               with Diverse Extractive Strategies},
+  booktitle = {Proceedings of the 2018 Conference of the
+               North American Chapter of the Association for
+               Computational Linguistics: Human Language Technologies},
+  publisher = {Association for Computational Linguistics},
+  pages     = {708--719},
+  year      = {2018},
+  month     = {June},
+  address   = {New Orleans, Louisiana},
+  url       = {http://aclweb.org/anthology/N18-1065}
+}
