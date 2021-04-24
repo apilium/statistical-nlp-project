@@ -22,9 +22,10 @@
 \begin{document}
 	
 \maketitle
+\maketitle
 
 \begin{abstract}
-\noindent
+	\noindent
 	In our project, we have decided to create text summarizer with BERT. 
 	There is already a Bert Extractive Summarizer -package. It's based on following article: \href{https://arxiv.org/ftp/arxiv/papers/1906/1906.04165.pdf}{https://arxiv.org/ftp/arxiv/papers/1906/1906.04165.pdf}
 	This package is intended for lecture-summarization, and our goal is to extend and fine-tune this model for news or scientific articles.
@@ -46,22 +47,29 @@ When it comes to text documents, summarization is closely related to data compre
 The first summarization techniques go back already more than 50 years to Luhn’s and Edmundson’s seminal papers on automatic summarization (1958 and 1969 respectively, \cite{textmining1958}, \cite{automaticextracting}). Early work in the field dealt with single document summarization (news story, scientific articles etc.) Later, multi document summarization was applied in big data clusters to provide a coherent and brief digest to the users. \\
 
 
-\section{Evaluation and results}
 
-Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 150, which resulted in tolerable running times (< 15 minutes). 
+\section{Methods}
+
+
+\section{Experiments}
+
+
+\section{Results}
+
+Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500, which resulted in tolerable running times (< 60 minutes). 
 
 \noindent
 Two different BERT models were tested, \bertlarge and \bertbase. These models were compared against baseline model Lede-3 and GPT-2. GPT-2 was chosen to be compared against BERT models, because in the original study \cite{extractive_bert} they noticed that BERT should be generating more representative embeddings of the sentences. Also \gptlarge was chosen as one model to be evaluated. \gptlarge has 774 million parameters, which is roughly the double of parameters in \bertlarge and \gptmedium. Also GPT-2-XL and new GPT-NEO (GPT-3 replication) would've been interesting comparisons, but unfortunately they were too large to fit on GPU.\\
 
 \noindent
-Tthe python package bert-extractive-summarizer \cite{extractive_bert} uses only sentences from original text, and the amount of sentences is defined by either fixed ratio, or amount of sentences. In this case the ratio was defaulted to 0.2, which means that we use 20\% of the sentences from original text. We can calculate empirical distribution of the ratios seen in reference summaries as displayed in Figure \ref{fig:empirical_ratio}.
+The python package bert-extractive-summarizer \cite{extractive_bert} uses only sentences from original text, and the amount of sentences is defined by either fixed ratio, or amount of sentences. In this case the ratio was defaulted to 0.2, which means that we use 20\% of the sentences from original text. We can calculate empirical distribution of the ratios seen in reference summaries as displayed in Figure \ref{fig:empirical_ratio}.
 
 
 \noindent
 \begin{figure}[h!]
 	\centering
 	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{images/empirical_ratio.png}
+	\includegraphics[scale=0.55]{empirical_ratio.png}
 	\caption{Distribution of observed ratios in the data}
 	\label{fig:empirical_ratio}
 \end{figure}
@@ -79,24 +87,43 @@ Here we can see that the mean is around 0.15. We can also plot what length of se
 \end{figure}
 
 \noindent
-Here we actually see, that there are multiple summaries which have sentence length 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text.
-
-
-\noindent
-\hspace*{-3cm}
-\includegraphics[scale=0.55]{images/rouge1.png}\\
-Heres image\\
-\noindent
-\hspace*{-3cm}
-\includegraphics[scale=0.55]{images/rouge2.png}
-
+Here we actually see, that there are multiple summaries which have sentence length 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text.\\
 
 \noindent
-\hspace*{-3cm}
-\includegraphics[scale=0.55]{images/rougel.png}
+Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong performance, comparable with state-of-art methods as discussed in \cite{dataset} Otherwise the models are performing similarly, although \gptmedium is achieving slightly higher scores. 
+
+\begin{figure}
+	\centering
+	\hspace*{-3cm}
+	\includegraphics[scale=0.55]{rouge1.png}\\
+	\caption{Rouge-1 scores with ratio=0.2}
+	\label{fig:rouge1_02}
+\end{figure}
 
 
 
+\begin{figure}
+	\centering
+	\hspace*{-3cm}
+	\includegraphics[scale=0.55]{rouge2.png}\\
+	\caption{Rouge-2 scores with ratio=0.2}
+	\label{fig:rouge2_02}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\hspace*{-3cm}
+	\includegraphics[scale=0.55]{rougel.png}\\
+	\caption{Rouge-L scores with ratio=0.2}
+	\label{fig:rougel_02}
+\end{figure}
+\section{Discussion}
+
+
+\section{Division of labor}
+
+
+\section{Appendix}
 
 % Import bibliography file %
 \bibliography{citations/sources.bib}
