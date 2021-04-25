@@ -4,11 +4,11 @@
 \graphicspath{ {./images/} }
 %Includes References in the table of contents%
 \usepackage[nottoc]{tocbibind}
+\usepackage{float}
 \usepackage{amsmath}
 
 \usepackage[square, numbers]{natbib}
 \bibliographystyle{abbrvnat}
-
 
 \title{Team 26: Text summarization}
 
@@ -54,9 +54,12 @@ The first summarization techniques go back already more than 50 years to Luhn’
 \section{Experiments}
 
 
+
 \section{Results}
 
-Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500, which resulted in tolerable running times (< 60 minutes). 
+Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500 at randomly, which resulted in tolerable running times (< 60 minutes). 
+
+\subsection{General text properties}
 
 \noindent
 Two different BERT models were tested, \bertlarge and \bertbase. These models were compared against baseline model Lede-3 and GPT-2. GPT-2 was chosen to be compared against BERT models, because in the original study \cite{extractive_bert} they noticed that BERT should be generating more representative embeddings of the sentences. Also \gptlarge was chosen as one model to be evaluated. \gptlarge has 774 million parameters, which is roughly the double of parameters in \bertlarge and \gptmedium. Also GPT-2-XL and new GPT-NEO (GPT-3 replication) would've been interesting comparisons, but unfortunately they were too large to fit on GPU.\\
@@ -89,10 +92,28 @@ Here we can see that the mean is around 0.15. We can also plot what length of se
 \noindent
 Here we actually see, that there are multiple summaries which have sentence length 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text.\\
 
-\noindent
-Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong performance, comparable with state-of-art methods as discussed in \cite{dataset} Otherwise the models are performing similarly, although \gptmedium is achieving slightly higher scores. 
+\subsection{Recall-Oriented Understudy for Gisting Evaluation (Rouge)}
 
-\begin{figure}
+ROUGE is a metric which determines the quality of summary. In this experiment we used ROUGE-N and ROUGE-L metrics. ROUGE-N metric measures n-gram overlapping between generated and reference summaries. ROUGE-L metric compares the longest common subsequence between generated and reference summaries. ROUGE recall can be defined as following \cite{rouge}: \\
+
+\begin{align*}
+	\text{ROUGE-recall} &= \dfrac{\text{n-overlapping-words}}{\text{n-words-in-reference-summary}}
+\end{align*}
+
+\noindent
+and ROUGE precision as following:\\
+
+\begin{align*}
+	\text{ROUGE-precision} &= \dfrac{\text{n-overlapping-words}}{\text{n-words-in-generated-summary}}
+\end{align*}
+
+\noindent
+ROUGE-f1 score used in the coding implementation is similar to normal f1-scores, this time just used with ROUGE-precision and ROUGE-recall. \cite{rouge}\\
+
+\noindent
+Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong performance, comparable with state-of-art methods as discussed in \cite{dataset}. Otherwise the models are performing similarly, although \gptmedium is achieving slightly higher scores. All of the rouge scores are seen in Figures \ref{fig:rouge1_02}, \ref{fig:rouge2_02} and \ref{fig:rougel_02} below. 
+
+\begin{figure}[H]
 	\centering
 	\hspace*{-3cm}
 	\includegraphics[scale=0.55]{rouge1.png}\\
@@ -100,9 +121,7 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 	\label{fig:rouge1_02}
 \end{figure}
 
-
-
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\hspace*{-3cm}
 	\includegraphics[scale=0.55]{rouge2.png}\\
@@ -110,14 +129,31 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 	\label{fig:rouge2_02}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\hspace*{-3cm}
 	\includegraphics[scale=0.55]{rougel.png}\\
 	\caption{Rouge-L scores with ratio=0.2}
 	\label{fig:rougel_02}
 \end{figure}
+
+\subsection{Bilingual Evaluation Understudy (BLEU)}
+
+\noindent
+We can also take a look at BLEU scores for each model. BLEU measures how much the n-grams in our generated summary appears on the reference summaries. BLEU performs similarly to ROUGE-precision, except BLEU introduces brevity penalty, which penalizes generated summaries that are shorter than reference summaries. As Lede-3 summaries are always of length 3, we can see how much Lede-3 is actually punished by looking at how many summaries have 3 sentences or more from the summary distribution in Figure \ref{fig:empirical_lengths}. We see that majority of the sentences are under 3.
+
+\begin{figure}[H]
+	\centering
+	\hspace*{-2cm}
+	\includegraphics[scale=0.55]{bleu_scores.png}\\
+	\caption{BLEU scores with 4-grams}
+	\label{fig:bleu}
+\end{figure}
+
+
 \section{Discussion}
+
+
 
 
 \section{Division of labor}
