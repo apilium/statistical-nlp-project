@@ -125,14 +125,14 @@ ROUGE is a metric which determines the quality of summary. In this experiment we
 
 \begin{align*}
 	\text{ROUGE-recall} &= \dfrac{\text{n-overlapping-words}}{\text{n-words-in-reference-summary}}
-\end{align*}
+\end{align*}\\
 
 \noindent
 and ROUGE precision as following:\\
 
 \begin{align*}
 	\text{ROUGE-precision} &= \dfrac{\text{n-overlapping-words}}{\text{n-words-in-generated-summary}}
-\end{align*}
+\end{align*}\\
 
 \noindent
 ROUGE-f1 score used in the coding implementation is similar to normal f1-scores, this time just used with ROUGE-precision and ROUGE-recall. \cite{rouge}\\
@@ -167,7 +167,7 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 \subsection{Bilingual Evaluation Understudy (BLEU)}
 
 \noindent
-We can also take a look at BLEU scores for each model. BLEU measures how much the n-grams in our generated summary appears on the reference summaries. BLEU performs similarly to ROUGE-precision, except BLEU introduces brevity penalty, which penalizes generated summaries that are shorter than reference summaries. As Lede-3 summaries are always of length 3, we can see how much Lede-3 is actually punished by looking at how many summaries have 3 sentences or more from the summary distribution in Figure \ref{fig:empirical_lengths}. We see that majority of the sentences are under 3. 
+We can also take a look at BLEU scores for each model. BLEU measures how much the n-grams in our generated summary appears on the reference summaries. BLEU performs similarly to ROUGE-precision, except BLEU introduces brevity penalty, which penalizes generated summaries that are shorter than reference summaries. As Lede-3 summaries are always of length 3, we can see how much Lede-3 is actually punished by looking at how many summaries have 3 sentences or more from the summary distribution in Figure \ref{fig:empirical_lengths}. We see that majority of the sentences are under 3. This means that Lede-3 sentences are not punished, and it actually provides really good performance on this dataset. 
 
 \begin{figure}[H]
 	\centering
@@ -180,7 +180,14 @@ We can also take a look at BLEU scores for each model. BLEU measures how much th
 
 \section{Discussion}
 
+\noindent
+In this experiment we saw how well extractive text summarization works if we choose sentences based on their centrality. For this we used K-means clustering to cluster embeddings that achieved from BERT-models. We used Lede-3 as baseline, and compared GPT-models to see how well they produce embeddings. We found out that Lede-3 acually is the most accurate summarization technique in this sense. Although Lede-3 is very simple algorithm and it has no understanding of the underlying text, it seems like the texts are written in such way that first sentences produce most important aspects of the text. This is interesting realization, and in the future it would be interesting to try to fine tune some deep learning model to see, whether it actually is able to outperform Lede-3 or not.\\
 
+\noindent
+In this experiment it was also interesting to see how four state-of-art models performed when extracting embeddings without fine tuning. Most interesting note was that scaling the model (\gptlarge) didn't necessarily result in better embeddings with respect to our task. \\
+
+\noindent
+This clustering approach was used when summarizing lecture videos in \cite{extractive_bert}, where this approach is more viable because lectures aren't as well structured as news articles. 
 
 
 \section{Division of labor}
