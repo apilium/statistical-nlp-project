@@ -54,9 +54,10 @@ The first summarization techniques go back already more than 50 years to Luhn’
 \section{Experiments}
 
 
+
 \section{Results}
 
-Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500, which resulted in tolerable running times (< 60 minutes). 
+Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500 at randomly, which resulted in tolerable running times (< 60 minutes). 
 
 \noindent
 Two different BERT models were tested, \bertlarge and \bertbase. These models were compared against baseline model Lede-3 and GPT-2. GPT-2 was chosen to be compared against BERT models, because in the original study \cite{extractive_bert} they noticed that BERT should be generating more representative embeddings of the sentences. Also \gptlarge was chosen as one model to be evaluated. \gptlarge has 774 million parameters, which is roughly the double of parameters in \bertlarge and \gptmedium. Also GPT-2-XL and new GPT-NEO (GPT-3 replication) would've been interesting comparisons, but unfortunately they were too large to fit on GPU.\\
@@ -90,7 +91,7 @@ Here we can see that the mean is around 0.15. We can also plot what length of se
 Here we actually see, that there are multiple summaries which have sentence length 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text.\\
 
 \noindent
-Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong performance, comparable with state-of-art methods as discussed in \cite{dataset} Otherwise the models are performing similarly, although \gptmedium is achieving slightly higher scores. 
+Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong performance, comparable with state-of-art methods as discussed in \cite{dataset}. Otherwise the models are performing similarly, although \gptmedium is achieving slightly higher scores. All of the rouge scores are seen in Figures \ref{fig:rouge1_02}, \ref{fig:rouge2_02} and \ref{fig:rougel_02} below. 
 
 \begin{figure}
 	\centering
@@ -117,7 +118,12 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 	\caption{Rouge-L scores with ratio=0.2}
 	\label{fig:rougel_02}
 \end{figure}
+
+
+
 \section{Discussion}
+
+
 
 
 \section{Division of labor}
