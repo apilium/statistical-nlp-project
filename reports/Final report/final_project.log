@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.3)  25 APR 2021 11:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.3)  25 APR 2021 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -381,48 +381,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--94
  []
 
 
-Overfull \hbox (32.80281pt too wide) in paragraph at lines 95--95
-[]\OT1/cmr/bx/n/12 Recall-Oriented Un-der-study for Gist-ing Eval-u-a-tion (Rou
-ge) 
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+
  []
 
+<./images//words_in_summary.png, id=91, 928.21782pt x 443.40656pt>
+File: ./images//words_in_summary.png Graphic file (type png)
+<use ./images//words_in_summary.png>
+Package pdftex.def Info: ./images//words_in_summary.png  used on input line 102
+.
+(pdftex.def)             Requested size: 510.52138pt x 243.87436pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
-
+Overfull \hbox (82.38533pt too wide) in paragraph at lines 101--103
+ []|  [] 
  []
 
 [4pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.101 \end{align*}
-                   <./images//empirical_lengths.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+l.106 
+       <./images//empirical_lengths.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
 
+<./images//empirical_summary_words.png, id=98, 986.68625pt x 525.965pt>
+File: ./images//empirical_summary_words.png Graphic file (type png)
+<use ./images//empirical_summary_words.png>
+Package pdftex.def Info: ./images//empirical_summary_words.png  used on input l
+ine 114.
+(pdftex.def)             Requested size: 542.67911pt x 289.28163pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--112
-
- []
-
-<./images//rouge1.png, id=103, 986.68625pt x 301.125pt>
-File: ./images//rouge1.png Graphic file (type png)
-<use ./images//rouge1.png>
-Package pdftex.def Info: ./images//rouge1.png  used on input line 119.
-(pdftex.def)             Requested size: 542.67911pt x 165.61925pt.
-
-Overfull \hbox (114.54306pt too wide) in paragraph at lines 118--119
- []|  [] 
- []
-
-<./images//rouge2.png, id=104, 986.68625pt x 301.125pt>
-File: ./images//rouge2.png Graphic file (type png)
-<use ./images//rouge2.png>
-Package pdftex.def Info: ./images//rouge2.png  used on input line 127.
-(pdftex.def)             Requested size: 542.67911pt x 165.61925pt.
-
-Overfull \hbox (114.54306pt too wide) in paragraph at lines 126--127
+Overfull \hbox (114.54306pt too wide) in paragraph at lines 113--115
  []|  [] 
  []
 
@@ -430,56 +421,131 @@ Overfull \hbox (114.54306pt too wide) in paragraph at lines 126--127
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.131 
-       <./images//rouge1.png>]
-<./images//rougel.png, id=113, 986.68625pt x 301.125pt>
-File: ./images//rougel.png Graphic file (type png)
-<use ./images//rougel.png>
-Package pdftex.def Info: ./images//rougel.png  used on input line 135.
-(pdftex.def)             Requested size: 542.67911pt x 165.61925pt.
+l.118 
+       <./images//words_in_summary.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 119--121
 
-Overfull \hbox (114.54306pt too wide) in paragraph at lines 134--135
- []|  [] 
  []
 
-<./images//bleu_scores.png, id=115, 785.93625pt x 301.125pt>
-File: ./images//bleu_scores.png Graphic file (type png)
-<use ./images//bleu_scores.png>
-Package pdftex.def Info: ./images//bleu_scores.png  used on input line 148.
-(pdftex.def)             Requested size: 432.26627pt x 165.61925pt.
 
-Overfull \hbox (32.58298pt too wide) in paragraph at lines 147--148
- []|  [] 
+Overfull \hbox (32.80281pt too wide) in paragraph at lines 122--122
+[]\OT1/cmr/bx/n/12 Recall-Oriented Un-der-study for Gist-ing Eval-u-a-tion (Rou
+ge) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--132
+
  []
 
 [6pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.152 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.152 
-       <./images//rouge2.png> <./images//rougel.png>] (./final_project.bbl)
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
+l.135 \end{align*}
+                  \\ <./images//empirical_summary_words.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--139
+
+ []
+
+<./images//rouge1.png, id=118, 986.68625pt x 301.125pt>
+File: ./images//rouge1.png Graphic file (type png)
+<use ./images//rouge1.png>
+Package pdftex.def Info: ./images//rouge1.png  used on input line 146.
+(pdftex.def)             Requested size: 542.67911pt x 165.61925pt.
+
+Overfull \hbox (114.54306pt too wide) in paragraph at lines 145--146
+ []|  [] 
+ []
+
+<./images//rouge2.png, id=119, 986.68625pt x 301.125pt>
+File: ./images//rouge2.png Graphic file (type png)
+<use ./images//rouge2.png>
+Package pdftex.def Info: ./images//rouge2.png  used on input line 154.
+(pdftex.def)             Requested size: 542.67911pt x 165.61925pt.
+
+Overfull \hbox (114.54306pt too wide) in paragraph at lines 153--154
+ []|  [] 
+ []
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.167 \end{document}
-                     <./images//bleu_scores.png>] (./final_project.aux)
+l.158 
+       <./images//rouge1.png>]
+<./images//rougel.png, id=129, 986.68625pt x 301.125pt>
+File: ./images//rougel.png Graphic file (type png)
+<use ./images//rougel.png>
+Package pdftex.def Info: ./images//rougel.png  used on input line 162.
+(pdftex.def)             Requested size: 542.67911pt x 165.61925pt.
+
+Overfull \hbox (114.54306pt too wide) in paragraph at lines 161--162
+ []|  [] 
+ []
+
+<./images//bleu_scores.png, id=131, 785.93625pt x 301.125pt>
+File: ./images//bleu_scores.png Graphic file (type png)
+<use ./images//bleu_scores.png>
+Package pdftex.def Info: ./images//bleu_scores.png  used on input line 175.
+(pdftex.def)             Requested size: 432.26627pt x 165.61925pt.
+
+Overfull \hbox (32.58298pt too wide) in paragraph at lines 174--175
+ []|  [] 
+ []
+
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.179 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+7}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.179 
+       <./images//rouge2.png> <./images//rougel.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 183--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
+
+ []
+
+(./final_project.bbl [9pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.15 
+      <./images//bleu_scores.png>]) [10] (./final_project.aux)
 Package rerunfilecheck Info: File `final_project.out' has not changed.
 (rerunfilecheck)             Checksum: 5E69504D88D0814970930FBDFD69DA2D;680.
  ) 
 Here is how much of TeX's memory you used:
- 6334 strings out of 479485
- 94746 string characters out of 5875916
- 401842 words of memory out of 5000000
- 23199 multiletter control sequences out of 15000+600000
+ 6353 strings out of 479485
+ 95252 string characters out of 5875916
+ 401956 words of memory out of 5000000
+ 23211 multiletter control sequences out of 15000+600000
  541619 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,12n,72p,830b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,12n,72p,830b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2020
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2020/texmf-dis
@@ -490,10 +556,10 @@ cm/cmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pf
 b><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/tex
 live/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2020
 /texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on final_project.pdf (7 pages, 184977 bytes).
+Output written on final_project.pdf (10 pages, 232536 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
