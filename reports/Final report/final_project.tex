@@ -178,16 +178,44 @@ We can also take a look at BLEU scores for each model. BLEU measures how much th
 \end{figure}
 
 
+\subsection{Comparison against other algorithms}
+
+So far we have compared our models to each other, but to understand how well this compares to other models we can look at summari.es 'Evaluate' tool. There is provided nice interactive tool to get different algorithms scores against each other. We can use F-score for comparison because it combines both recall and precision. First let's see the performance of Lede-3 to see how well our subset of data represents the whole data. In Figure \ref{fig:lede_full} we see the Lede-3 performance on the whole extractive data. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{lede3_full_data.png}\\
+	\caption{Lede-3 on full data}
+	\label{fig:lede_full}
+\end{figure}
+
+\noindent
+Comparing to our Lede-3 F1-scores in Figures \ref{fig:rouge1_02}, \ref{fig:rouge2_02} and \ref{fig:rougel_02} we see that the performance is almost identical with error margin of 1 unit. This gives us confidence in our choice of subset of data, and it makes comparing model performance more reliable.\\
+
+\noindent
+Next we can compare our models to TextRank performance, which is known to be one of the best-performing models. In following Figure \ref{fig:textrank} we see that our models actually outperform TextRank in every ROUGE score in F1-metrics by a large margin, up to 10 units. This is a good indicator that our models are indeed very good, but Lede-3 is simply great choice for news articles.
+
+\begin{figure}[H]
+	\centering
+	\hspace*{-2cm}
+	\includegraphics[scale=0.55]{textrank_full.png}\\
+	\caption{TextRank performance on full data}
+	\label{fig:textrank}
+\end{figure}
+
+\noindent
+All in all, we can say that our models performed well on the data considering that they are producing word embeddings without any fine-tuning as general purpose models. Our performance would most likely ramp up if we decided to fine-tune our models to summarization tasks. \\
+
 \section{Discussion}
 
 \noindent
-In this experiment we saw how well extractive text summarization works if we choose sentences based on their centrality. For this we used K-means clustering to cluster embeddings that achieved from BERT-models. We used Lede-3 as baseline, and compared GPT-models to see how well they produce embeddings. We found out that Lede-3 acually is the most accurate summarization technique in this sense. Although Lede-3 is very simple algorithm and it has no understanding of the underlying text, it seems like the texts are written in such way that first sentences produce most important aspects of the text. This is interesting realization, and in the future it would be interesting to try to fine tune some deep learning model to see, whether it actually is able to outperform Lede-3 or not.\\
+In this experiment we saw how well extractive text summarization works if we choose sentences based on their expressiveness in embedding space. We used K-means clustering to cluster embeddings that are encoded from the model. We used Lede-3 as a baseline, and also compared GPT-models to see how well they produce embeddings compared to BERT. We found out that Lede-3 is the most accurate summarization technique for our data. Although Lede-3 is very simple algorithm and it has no understanding of the underlying text, it seems like the texts are written in such way that first sentences produce most important aspects of the text. This is interesting realization, and in the future it would be interesting to try to fine tune some deep learning model to see, whether it actually is able to outperform Lede-3 or not.\\
 
 \noindent
-In this experiment it was also interesting to see how four state-of-art models performed when extracting embeddings without fine tuning. Most interesting note was that scaling the model (\gptlarge) didn't necessarily result in better embeddings with respect to our task. \\
+In this experiment it was also interesting to see how four state-of-art models performed when extracting embeddings without fine tuning. Most interesting note was that scaling the model (\gptlarge) didn't necessarily result in better embeddings with respect to our task. The models were also compared to well known TextRank, which they outperformed by large margin in F1-scores. This gives confidence in large general purpose models, as they were not fine-tuned for this task. \\
 
 \noindent
-This clustering approach was used when summarizing lecture videos in \cite{extractive_bert}, where this approach is more viable because lectures aren't as well structured as news articles. 
+The clustering approach was used when summarizing lecture videos in \cite{extractive_bert}, where this approach is more viable because lectures aren't as well structured as news articles. Although the algorithm was proposed when thinking of this type of lecture summarization, it performed surprisingly well also on news articles. \\
 
 
 \section{Division of labor}
