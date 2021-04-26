@@ -1,0 +1,5 @@
+\BOOKMARK [2][-]{subsection.0.1}{1. Data retrieval}{}% 1
+\BOOKMARK [3][-]{subsubsection.0.1.1}{Data directory and batch size selection}{subsection.0.1}% 2
+\BOOKMARK [2][-]{subsection.0.2}{2. Initialize model and do predictions}{}% 3
+\BOOKMARK [2][-]{subsection.0.3}{3. Performance evaluation and results}{}% 4
+\BOOKMARK [2][-]{subsection.0.4}{BLEU}{}% 5
