@@ -6,6 +6,7 @@
 \usepackage[nottoc]{tocbibind}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{pdfpages}
 
 \usepackage[square, numbers]{natbib}
 \bibliographystyle{abbrvnat}
@@ -17,7 +18,8 @@
 \newcommand{\gptmedium}{$\text{GPT-2}_{MEDIUM}$ }
 \newcommand{\gptlarge}{$\text{GPT-2}_{LARGE}$ }
 
-
+% No need to use noindent all the time :D
+\setlength\parindent{0pt}
 
 \begin{document}
 	
@@ -43,11 +45,14 @@ Automatic summarization is the process of shortening a set of data computational
 
 When it comes to text documents, summarization is closely related to data compression and information understanding. The ability to produce coherent, well-structured summaries has the potential to transform efficiently the way that discovery systems work, as well as help human readers in skimming large datasets of text documents. That is why automatic summarization is considered one of the most important, yet least solved, tasks in NLP and a method that will transform the way people consume information on the Internet. In conclusion, applying text summarization reduces reading time, accelerates information retrieval and increases the amount of useful, dense information. In our case, we will deal with extractive summarization where a system produces summaries by choosing a subset of the initial text.
 
+\clearpage
 \section{Background}
 The first summarization techniques go back already more than 50 years to Luhn’s and Edmundson’s seminal papers on automatic summarization (1958 and 1969 respectively, \cite{textmining1958}, \cite{automaticextracting}). Early work in the field dealt with single document summarization (news story, scientific articles etc.) Later, multi document summarization was applied in big data clusters to provide a coherent and brief digest to the users. \\
 
+In work by \cite{extractive_bert} they investigated a new way for creating extractive summaries for lectures. They tested K-means clustering for high dimensional embeddings produced from different deep learning models (BERT, GPT-2) and their ensembles. Here the K-hyperparameter represents the amount of sentences that are used in the summary. Idea was, that by finding different clusterings of the embeddings it would be possible to find different types of sentences in different clusters. Then from these clusters, they would take the most central sentence and use it in the summary. 
 
 
+\clearpage
 \section{Methods}
 
 In many NLP tasks, the shortage of training data is often the source of the problems. There has been some research to tackle this issue by using unannotated text on the internet for training language representation models that serve general purpose. This process is also known as pre-training. The idea is that the pre-trained model can be fine-tuned later on small-data NLP tasks like question answering and sentiment analysis to have significant accuracy improvements compared to training on these datasets from scratch. 
@@ -73,13 +78,15 @@ BERT has also been used in previous work for text summarization for news. In his
 
 \subsection*{GPT}
 
+
+
 \section{Experiments}
 
 
-
+\clearpage
 \section{Results}
 
-Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500 at randomly, which resulted in tolerable running times (< 60 minutes). 
+Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500 at randomly, which resulted in tolerable running times ($<$ 60 minutes). Evaluations were automated, but also manual sanity checks were done. These sanity checks are however not listed here in the report, as it would take unnecessarily much space. \\
 
 \subsection{General text properties}
 
@@ -100,7 +107,7 @@ The python package bert-extractive-summarizer \cite{extractive_bert} uses only s
 \end{figure}
 
 \noindent
-Here we can see that the mean is around 0.15. We can also plot what length of sentences there are as in following Figure \ref{fig:empirical_lengths}.
+Here we can see that the mean is around 0.15. We can also plot how many sentences there are in summaries which is seen in Figure \ref{fig:empirical_lengths}.
 
 \noindent
 \begin{figure}[H]
@@ -112,10 +119,10 @@ Here we can see that the mean is around 0.15. We can also plot what length of se
 \end{figure}
 
 \noindent
-Here we actually see that there are multiple summaries which have sentence amount of 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text, as we see later.\\
+Here we actually see that there are multiple summaries which have sentence amount of 1. This is important to remember because it might favor Lede-3 classifier due to shortness of text, as we will see later.\\
 
 \noindent
-We can also view the actual summary distribution statistics from the dataset website summari.es \cite{dataset}. By using their visualization tool, we get following distribution. \\
+We can also view the true summary distribution statistics from the Newsroom-dataset website summari.es \cite{dataset}. By using their visualization tool, we get following distribution for amount of words in summaries. \\
 
 \noindent
 \begin{figure}[H]
@@ -127,7 +134,7 @@ We can also view the actual summary distribution statistics from the dataset web
 \end{figure}
 
 \noindent
-If we plot amount of words seen in our samples, we get similar looking plot as in following Figure.\\
+To compare this distribution with our empirical distribution, we also need to plot summary word distribution. When we plot amount of words seen in our samples, we get similar looking plot to Figure \ref{fig:words_in_summary} in our new Figure \ref{fig:empirical_summary_words}.\\
 
 \noindent
 \begin{figure}[H]
@@ -139,7 +146,7 @@ If we plot amount of words seen in our samples, we get similar looking plot as i
 \end{figure}
 
 \noindent
-From this it seems that newsarticle summaries tend to be short.\\
+This leads to a conclusion, that news article summaries are quite short in general. Because the word distribution for summaries matches, it also means that our Figure \ref{fig:empirical_lengths} describes the amount of sentences quite well.\\
 
 \subsection{Recall-Oriented Understudy for Gisting Evaluation (Rouge)}
 
@@ -166,7 +173,7 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 	\centering
 	\hspace*{-3cm}
 	\includegraphics[scale=0.55]{rouge1.png}\\
-	\caption{Rouge-1 scores with ratio=0.2}
+	\caption{Rouge-1 scores with text-to-summary sentence-ratio=0.2}
 	\label{fig:rouge1_02}
 \end{figure}
 
@@ -174,7 +181,7 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 	\centering
 	\hspace*{-3cm}
 	\includegraphics[scale=0.55]{rouge2.png}\\
-	\caption{Rouge-2 scores with ratio=0.2}
+	\caption{Rouge-2 scores with text-to-summary sentence-ratio=0.2}
 	\label{fig:rouge2_02}
 \end{figure}
 
@@ -182,14 +189,14 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 	\centering
 	\hspace*{-3cm}
 	\includegraphics[scale=0.55]{rougel.png}\\
-	\caption{Rouge-L scores with ratio=0.2}
+	\caption{Rouge-L scores with text-to-summary sentence-ratio=0.2}
 	\label{fig:rougel_02}
 \end{figure}
 
 \subsection{Bilingual Evaluation Understudy (BLEU)}
 
 \noindent
-We can also take a look at BLEU scores for each model. BLEU measures how much the n-grams in our generated summary appears on the reference summaries. BLEU performs similarly to ROUGE-precision, except BLEU introduces brevity penalty, which penalizes generated summaries that are shorter than reference summaries. As Lede-3 summaries are always of length 3, we can see how much Lede-3 is actually punished by looking at how many summaries have 3 sentences or more from the summary distribution in Figure \ref{fig:empirical_lengths}. We see that majority of the sentences are under 3. This means that Lede-3 sentences are not punished, and it actually provides really good performance on this dataset. 
+We can also take a look at BLEU scores for each model. BLEU measures how much the n-grams in our generated summary appears in the reference summaries. BLEU performs similarly to ROUGE-precision, except BLEU introduces brevity penalty, which penalizes generated summaries that are shorter than reference summaries. As Lede-3 summaries are always of length 3, in tasks where reference summaries are long, this would lead to penalizing Lede-3 model. In our case we can estimate how much Lede-3 is punished by looking at how many reference summaries have 3 sentences or more from the summary distribution in Figure \ref{fig:empirical_lengths}. We see that majority of the sentences are under length 3. This means that Lede-3 sentences are not punished, and it actually provides really good performance on this dataset as we see in Figure \ref{fig:bleu}. 
 
 \begin{figure}[H]
 	\centering
@@ -199,26 +206,29 @@ We can also take a look at BLEU scores for each model. BLEU measures how much th
 	\label{fig:bleu}
 \end{figure}
 
-
+\clearpage
 \section{Discussion}
 
 \noindent
-In this experiment we saw how well extractive text summarization works if we choose sentences based on their centrality. For this we used K-means clustering to cluster embeddings that achieved from BERT-models. We used Lede-3 as baseline, and compared GPT-models to see how well they produce embeddings. We found out that Lede-3 acually is the most accurate summarization technique in this sense. Although Lede-3 is very simple algorithm and it has no understanding of the underlying text, it seems like the texts are written in such way that first sentences produce most important aspects of the text. This is interesting realization, and in the future it would be interesting to try to fine tune some deep learning model to see, whether it actually is able to outperform Lede-3 or not.\\
+In this experiment we saw how well extractive text summarization works if we choose sentences based on their centrality. We used K-means clustering to cluster embeddings that are achieved from models. Then we picked the most central embeddings of each cluster. We used Lede-3 as baseline, and also compared GPT-models to our BERT-model to see how well they produce embeddings. We found out that Lede-3 acually is the most accurate summarization technique in this sense. Although Lede-3 is very simple algorithm and it has no understanding of the underlying text, it seems like the texts are written in such way that first sentences produce most important aspects of the text. This is interesting realization, and in the future it would be interesting to try to fine tune some deep learning model to see, whether it actually is able to outperform Lede-3 or not.\\
 
 \noindent
-In this experiment it was also interesting to see how four state-of-art models performed when extracting embeddings without fine tuning. Most interesting note was that scaling the model (\gptlarge) didn't necessarily result in better embeddings with respect to our task. \\
+In this experiment it was also interesting to see how four state-of-art models performed when extracting embeddings without fine tuning. Most interesting note was that scaling the model (\gptlarge) didn't necessarily result in better embeddings with respect to our task.\\
 
 \noindent
 This clustering approach was used when summarizing lecture videos in \cite{extractive_bert}, where this approach is more viable because lectures aren't as well structured as news articles. 
 
-
+\clearpage
 \section{Division of labor}
 
 
-\section{Appendix}
-
 % Import bibliography file %
 \bibliography{citations/sources.bib}
+
+\clearpage
+\section{Appendix}
+The code written for the project. 
+\includepdf[pages=-]{summarization_analysis}
 
 \end{document}
 
