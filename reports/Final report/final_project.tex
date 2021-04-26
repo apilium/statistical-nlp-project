@@ -8,10 +8,26 @@
 \usepackage{amsmath}
 \usepackage{pdfpages}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+
 \usepackage[square, numbers]{natbib}
 \bibliographystyle{abbrvnat}
 
-\title{Team 26: Text summarization}
+\title{News article summarization}
+\author{
+  Günay, A\\
+  \texttt{911443}
+  \and
+  Sormunen, T\\
+  \texttt{878902}
+  \and
+  Vasileios, Christoforidis***\\
+  \textbf{Couldn't be reached during project.\\ Only contributed to the project planning}
+}
+\renewcommand\Authands{ and }
+
 
 \newcommand{\bertlarge}{$\text{BERT}_{LARGE}$ }
 \newcommand{\bertbase}{$\text{BERT}_{BASE}$ }
@@ -23,7 +39,6 @@
 
 \begin{document}
 	
-\maketitle
 \maketitle
 
 \begin{abstract}
@@ -37,6 +52,7 @@
 
 \clearpage
 \section{Introduction}
+
 Automatic summarization is the process of shortening a set of data computationally, to create a subset (a summary) that represents the most important or relevant information within the original content. There are two main approaches to automatic summarization (independently of the application domain, e.g. text, images, video etc.):
 \begin{itemize}
 	\item Extraction-based or extractive summarization 
@@ -57,7 +73,23 @@ In work by \cite{extractive_bert} they investigated a new way for creating extra
 
 In many NLP tasks, the shortage of training data is often the source of the problems. There has been some research to tackle this issue by using unannotated text on the internet for training language representation models that serve general purpose. This process is also known as pre-training. The idea is that the pre-trained model can be fine-tuned later on small-data NLP tasks like question answering and sentiment analysis to have significant accuracy improvements compared to training on these datasets from scratch. 
 
-In our project, we mainly used BERT-based and GPT-based pre-trained models for text summarization.
+In our project, we mainly used GPT-based and BERT-based pre-trained models for text summarization.
+
+\subsection*{GPT}
+
+GPT, also known as Generative Pre-trained Transformer, is the first semi-supervised approach to language models. The procedure is to train a generative language model using unlabeled data and fine-tune the model with examples of NLP tasks like sentiment analysis, textual entailment and question answering. The goal is to learn a universal representation that transfers with little adaptation to a wide range of tasks. \\
+
+The training is in two stages: first, using a language modeling objective on unlabeled data to learn the initial parameters of a neural network mode then adapting these parameters to a target task using the supervised objective. The data set used in training is BooksCorpus which includes over 7,000 unique unpublished books from a variety of genres and especially, long sections of continuous text that allows the model to learn to handle long-range dependencies in the text. \cite{bookscorpus}\\
+
+For the model architecture, GPT uses transformers which have been shown to perform strongly on various NLP tasks such as machine translation and document generation. Transformers allow the model to have a better structured memory for dealing with long-term dependencies in the text, compared to other methods like recurrent neural networks which are not able to preserve these dependencies well. Below figure about the model architecture is taken from the original paper.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.65]{reports/Final report/images/gpt_model.png}
+	\caption{Model architecture of GPT}
+	\label{fig:gpt}
+\end{figure}
+
 
 \subsection*{BERT }
 
@@ -76,12 +108,16 @@ BERT can also be considered conceptually simple. As mentioned earlier, BERT uses
 
 BERT has also been used in previous work for text summarization for news. In his paper, Yang suggests a fine tuned variant of BERT called BERTSUM for extractive summarization in which the input sequence and embeddings of BERT are modified to make it possible for extracting summaries. It is concluded that BERTSUM with inter-sentence Transformer layers achieve the best performance for extractive summarization of news, using CNN/DailyMail news and New York Times Annotated Corpus. \cite{liu2019finetune}
 
-\subsection*{GPT}
 
+\subsection*{LEDE-3 }
 
-
+LEDE-3 is a rule-based summarization strategy which copies the first sentence, first paragraph, or first \textit{n} words of the text to produce a summary. It is often used as a baseline in performance evaluation. In our project, we use LEDE-3 as the first three sentences of the news articles form the summary. Although the underlying idea is simple, this method is still competitive with state-of-the-art systems as the articles tend to have the most quality sentences in first sentence, first paragraph or a sequence. \cite{dataset}
+\clearpage
 \section{Experiments}
 
+The underlying algorithm for \cite{extractive_bert} works as following: first, the sentence embeddings for text to be summarized are generated with selected model (BERT or GPT-2). On these embeddings, then K-means clustering algorithm is performed with pre-defined amount of clusters K. Each cluster center then clusters semantically similar sentences, and the algorithm takes the most central embedding in the respective cluster. The idea is that different clusters would find different type of sentences, and the most central sentence should represent the cluster the best.\\
+
+K-hyperparameter should be chosen before the experiment is carried out. In this case K is chosen as a ratio for summarization sentence amount and original text sentence amount. In practise ratio of 0.5 would mean that we want to generate a summary that has half the amount of sentences that are in the original text to-be-summarized. In the experiments ratio of 0.2 was used. This might however be slightly too large for news articles, as we see from figures in Section 5. More appropriate ratio might be between 0.1 and 0.2, but 0.2 also provides sufficient results. \\
 
 \clearpage
 \section{Results}
@@ -221,6 +257,7 @@ This clustering approach was used when summarizing lecture videos in \cite{extra
 \clearpage
 \section{Division of labor}
 
+The labor was divided between Günay and Sormunen. Günay was mostly responsible for the model write up and implementation, and Sormunen was responsible for the model evaluation and data pipeline production. Work was equally divided, and done in a good spirit. 
 
 % Import bibliography file %
 \bibliography{citations/sources.bib}
