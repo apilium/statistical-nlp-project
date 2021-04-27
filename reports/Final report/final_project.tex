@@ -13,18 +13,20 @@
 \usepackage{authblk}
 
 \usepackage[square, numbers]{natbib}
-\bibliographystyle{abbrvnat}
+%\bibliographystyle{abbrvnat}
+\bibliographystyle{unsrt}
 
-\title{News article summarization}
+\title{\textbf{News article summarization}\\
+\textit{ELEC-E5550 - Statistical Natural Language Processing}}
 \author{
-  Günay, A\\
+  Günay, Abdullah\\
   \texttt{911443}
   \and
-  Sormunen, T\\
+  Sormunen, Teemu\\
   \texttt{878902}
   \and
-  Vasileios, Christoforidis***\\
-  \textbf{Couldn't be reached during project.\\ Only contributed to the project planning}
+  Christoforidis, Vasileios *\\
+  \textbf{*Couldn't be reached during project.\\ Only contributed to the project planning}
 }
 \renewcommand\Authands{ and }
 
@@ -71,58 +73,65 @@ In work by \cite{extractive_bert} they investigated a new way for creating extra
 \clearpage
 \section{Methods}
 
-In many NLP tasks, the shortage of training data is often the source of the problems. There has been some research to tackle this issue by using unannotated text on the internet for training language representation models that serve general purpose. This process is also known as pre-training. The idea is that the pre-trained model can be fine-tuned later on small-data NLP tasks like question answering and sentiment analysis to have significant accuracy improvements compared to training on these datasets from scratch. 
+In many NLP tasks, the shortage of training data is often the source of the problems. There has been some research to tackle this issue by using unannotated text on the internet for training language representation models that serve general purpose. This process is also known as pre-training. The idea is that the pre-trained model can be fine-tuned later on small-data NLP tasks like question answering and sentiment analysis to have significant accuracy improvements compared to training on these datasets from scratch. \\
 
 In our project, we mainly used GPT-based and BERT-based pre-trained models for text summarization.
 
 \subsection*{GPT}
 
-GPT, also known as Generative Pre-trained Transformer, is the first semi-supervised approach to language models. The procedure is to train a generative language model using unlabeled data and fine-tune the model with examples of NLP tasks like sentiment analysis, textual entailment and question answering. The goal is to learn a universal representation that transfers with little adaptation to a wide range of tasks. \\
+GPT, also known as Generative Pre-trained Transformer, is one of the first semi-supervised approaches to language models. The procedure is to train a generative language model using unlabeled data and fine-tune the model with examples of NLP tasks like sentiment analysis, textual entailment and question answering. The goal is to learn a universal representation that transfers with little adaptation to a wide range of tasks \cite{gpt}. \\
 
-The training is in two stages: first, using a language modeling objective on unlabeled data to learn the initial parameters of a neural network mode then adapting these parameters to a target task using the supervised objective. The data set used in training is BooksCorpus which includes over 7,000 unique unpublished books from a variety of genres and especially, long sections of continuous text that allows the model to learn to handle long-range dependencies in the text. \cite{bookscorpus}\\
+The training is in two stages: first, using a language modeling objective on unlabeled data to learn the initial parameters of a neural network mode then adapting these parameters to a target task using the supervised objective. The data set used in training is BooksCorpus which includes over 7,000 unique unpublished books from a variety of genres and especially, long sections of continuous text that allows the model to learn to handle long-range dependencies in the text \cite{bookscorpus}.\\
 
 For the model architecture, GPT uses transformers which have been shown to perform strongly on various NLP tasks such as machine translation and document generation. Transformers allow the model to have a better structured memory for dealing with long-term dependencies in the text, compared to other methods like recurrent neural networks which are not able to preserve these dependencies well. Below figure about the model architecture is taken from the original paper.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.65]{reports/Final report/images/gpt_model.png}
+	\includegraphics[scale=0.3]{reports/Final report/images/gpt.png}
 	\caption{Model architecture of GPT}
 	\label{fig:gpt}
 \end{figure}
 
+As shown in Figure 1, the model consists of twelve layers of decoder-only transformer with masked self-attention layers. For optimization algorithm, Adam is used rather than stochastic gradient descent. The learning rate is adjusted linearly starting from zero to a maximum of 2.5×10\textsuperscript{-4} \cite{gpt}. \\
+
+GPT-2 is used in the project as it is the scaled-up version of GPT. It has 1.5 billion parameters and was trained on a new corpus called WebText, a dataset of 8 million web pages. There are also few modifications in the model architecture; layer normalization was moved to the input of each sub-block, an additional layer normalization added after the final self-attention block, and increased vocabulary size, context size and batch sizes are used \cite{gpt2}.
 
 \subsection*{BERT }
 
-BERT, also known as Bidirectional Encoder Representations from Transformers, is an example of pre-trained language representation models which uses a combination of masked language modeling objective and next sentence prediction on a large plain text corpus including Wikipedia and the Toronto Book Corpus. Unlike other language representation models, BERT is designed bidirectional in the way that it reads the input sequences. This characteristic allows the model to learn the context of a word from both left and right sides, capturing the previous and next contexts. BERT can also be fine tuned with one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. \cite{devlin2019bert}
+BERT, also known as Bidirectional Encoder Representations from Transformers, is an example of pre-trained language representation models which uses a combination of masked language modeling objective and next sentence prediction on a large plain text corpus including Wikipedia and the Toronto Book Corpus. Unlike other language representation models, BERT is designed bidirectional in the way that it reads the input sequences. This characteristic allows the model to learn the context of a word from both left and right sides, capturing the previous and next contexts. BERT can also be fine tuned with one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications \cite{devlin2019bert}. \\
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.2]{bert.png}
 	\caption{Architectures of known pre-training methods}
 	\label{fig:mesh1}
 \end{figure}
 
-In the above figure created by Google AI, the neural network architectures state-of-the-art contextual pre-training methods are shown. The arrows show the information flow through layers while the green boxes indicate the final contextualized representation for input words. It can be seen that BERT is deeply bidirectional while OpenAI's GPT is unidirectional and ELMo has a shallow bidirectional structure.
+In the above figure created by Google AI, the neural network architectures state-of-the-art contextual pre-training methods are shown. The arrows show the information flow through layers while the green boxes indicate the final contextualized representation for input words. It can be seen that BERT is deeply bidirectional while OpenAI's GPT is unidirectional and ELMo has a shallow bidirectional structure.\\
 
-BERT can also be considered conceptually simple. As mentioned earlier, BERT uses the advantage of bidirectionality by using a masked language modeling objective. Some words in the input text are masked out and each word are conditioned bidirectionally to predict the those masked words. It also uses next sentence prediction in which the model predicts if a sentence logically follows another sentence which was given previously. This task enables BERT to capture the relationship between sentences. \cite{devlin2019bert}
+The model architecture for BERT consists of a multi-layer bidirectional encoder-only Transformer based on the original implementation \cite{attention}. There are two models with different sizes: \bertbase (12 layers of encoder-only transformer, 110 million parameters) \bertlarge(24 layers of encoder-only transformer, 340 million parameters). \bertbase has the same model size as GPT for comparisons. The main difference between BERT and GPT is that the BERT Transformer uses bidirectional self-attention while the GPT Transformer uses constrained self-attention where every token can only attend to context to its left as shown in Figure 2 \cite{devlin2019bert}.\\
 
-BERT has also been used in previous work for text summarization for news. In his paper, Yang suggests a fine tuned variant of BERT called BERTSUM for extractive summarization in which the input sequence and embeddings of BERT are modified to make it possible for extracting summaries. It is concluded that BERTSUM with inter-sentence Transformer layers achieve the best performance for extractive summarization of news, using CNN/DailyMail news and New York Times Annotated Corpus. \cite{liu2019finetune}
+BERT can also be considered conceptually simple. As mentioned earlier, BERT uses the advantage of bidirectionality by using a masked language modeling objective. Some words in the input text are masked out and each word are conditioned bidirectionally to predict the those masked words. It also uses next sentence prediction in which the model predicts if a sentence logically follows another sentence which was given previously. This task enables BERT to capture the relationship between sentences \cite{devlin2019bert}.\\
+
+BERT has also been used in previous work for text summarization for news. In his paper, Yang suggests a fine tuned variant of BERT called BERTSUM for extractive summarization in which the input sequence and embeddings of BERT are modified to make it possible for extracting summaries. It is concluded that BERTSUM with inter-sentence Transformer layers achieve the best performance for extractive summarization of news, using CNN/DailyMail news and New York Times Annotated Corpus \cite{liu2019finetune}.
 
 
 \subsection*{LEDE-3 }
 
-LEDE-3 is a rule-based summarization strategy which copies the first sentence, first paragraph, or first \textit{n} words of the text to produce a summary. It is often used as a baseline in performance evaluation. In our project, we use LEDE-3 as the first three sentences of the news articles form the summary. Although the underlying idea is simple, this method is still competitive with state-of-the-art systems as the articles tend to have the most quality sentences in first sentence, first paragraph or a sequence. \cite{dataset}
+LEDE-3 is a rule-based summarization strategy which copies the first sentence, first paragraph, or first \textit{n} words of the text to produce a summary. It is often used as a baseline in performance evaluation. In our project, we use LEDE-3 as the first three sentences of the news articles to form the summary. Although the underlying idea is simple, this method is still competitive with state-of-the-art systems as the articles tend to have the most quality sentences in first sentence, first paragraph or a sequence. \cite{dataset}
 \clearpage
 \section{Experiments}
 
-The underlying algorithm for \cite{extractive_bert} works as following: first, the sentence embeddings for text to be summarized are generated with selected model (BERT or GPT-2). On these embeddings, then K-means clustering algorithm is performed with pre-defined amount of clusters K. Each cluster center then clusters semantically similar sentences, and the algorithm takes the most central embedding in the respective cluster. The idea is that different clusters would find different type of sentences, and the most central sentence should represent the cluster the best.\\
+The underlying algorithm for \cite{extractive_bert} works as following: first, the sentence embeddings for text to be summarized are generated with selected model (BERT or GPT-2). These models are not fine-tuned for this summarization, and they are only used to generate embeddings from sentences. On these embeddings, then K-means clustering algorithm is performed with pre-defined amount of clusters K. Each cluster center then clusters semantically similar sentences, and the algorithm takes the most central embedding in the respective cluster. The idea is that different clusters would find different type of sentences, and the most central sentence should represent the cluster the best.\\
 
 K-hyperparameter should be chosen before the experiment is carried out. In this case K is chosen as a ratio for summarization sentence amount and original text sentence amount. In practise ratio of 0.5 would mean that we want to generate a summary that has half the amount of sentences that are in the original text to-be-summarized. In the experiments ratio of 0.2 was used. This might however be slightly too large for news articles, as we see from figures in Section 5. More appropriate ratio might be between 0.1 and 0.2, but 0.2 also provides sufficient results. \\
+
+Because we are not fine-tuning the models for summarization, the comparison between models is practically to see which model produces the most coherent and informative embeddings. 
 
 \clearpage
 \section{Results}
 
-Evaluation was done on newsroom dataset \cite{dataset}. The model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500 at randomly, which resulted in tolerable running times ($<$ 60 minutes). Evaluations were automated, but also manual sanity checks were done. These sanity checks are however not listed here in the report, as it would take unnecessarily much space. \\
+Evaluation was done on newsroom dataset \cite{dataset}. The summarization model inference however is extremely slow, and only a subset of samples was chosen to be evaluated. The sample size was chosen to be 500 at randomly, which resulted in tolerable running times ($<$ 60 minutes in total with RTX2060 GPU). Evaluations were automated, but also manual sanity checks were done. These sanity checks are however not listed here in the report, as it would take unnecessarily much space. One text example is given in presentation of the project, and they can also be read from the .csv files attached with pandas for example. \\
 
 \subsection{General text properties}
 
@@ -136,8 +145,8 @@ The python package bert-extractive-summarizer \cite{extractive_bert} uses only s
 \noindent
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{empirical_ratio.png}
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{empirical_ratio.png}
 	\caption{Distribution of observed ratios in the data}
 	\label{fig:empirical_ratio}
 \end{figure}
@@ -148,8 +157,8 @@ Here we can see that the mean is around 0.15. We can also plot how many sentence
 \noindent
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{empirical_lengths.png}
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{empirical_lengths.png}
 	\caption{Distribution of observed ratios in the data}
 	\label{fig:empirical_lengths}
 \end{figure}
@@ -163,8 +172,8 @@ We can also view the true summary distribution statistics from the Newsroom-data
 \noindent
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{words_in_summary.png}
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{words_in_summary.png}
 	\caption{Distribution of words in summaries}
 	\label{fig:words_in_summary}
 \end{figure}
@@ -175,8 +184,8 @@ To compare this distribution with our empirical distribution, we also need to pl
 \noindent
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{empirical_summary_words.png}
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{empirical_summary_words.png}
 	\caption{Distribution of words in summaries}
 	\label{fig:empirical_summary_words}
 \end{figure}
@@ -207,24 +216,24 @@ Rouge scores seem to be dominated by Lede-3. Lede-3 is known to have strong perf
 
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{rouge1.png}\\
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{rouge1.png}\\
 	\caption{Rouge-1 scores with text-to-summary sentence-ratio=0.2}
 	\label{fig:rouge1_02}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{rouge2.png}\\
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{rouge2.png}\\
 	\caption{Rouge-2 scores with text-to-summary sentence-ratio=0.2}
 	\label{fig:rouge2_02}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\hspace*{-3cm}
-	\includegraphics[scale=0.55]{rougel.png}\\
+	%\hspace*{-3cm}
+	\includegraphics[scale=0.4]{rougel.png}\\
 	\caption{Rouge-L scores with text-to-summary sentence-ratio=0.2}
 	\label{fig:rougel_02}
 \end{figure}
@@ -236,8 +245,8 @@ We can also take a look at BLEU scores for each model. BLEU measures how much th
 
 \begin{figure}[H]
 	\centering
-	\hspace*{-2cm}
-	\includegraphics[scale=0.55]{bleu_scores.png}\\
+	%\hspace*{-2cm}
+	\includegraphics[scale=0.4]{bleu_scores.png}\\
 	\caption{BLEU scores with 4-grams}
 	\label{fig:bleu}
 \end{figure}
@@ -257,9 +266,13 @@ This clustering approach was used when summarizing lecture videos in \cite{extra
 \clearpage
 \section{Division of labor}
 
-The labor was divided between Günay and Sormunen. Günay was mostly responsible for the model write up and implementation, and Sormunen was responsible for the model evaluation and data pipeline production. Work was equally divided, and done in a good spirit. 
+The labor was divided between Günay and Sormunen. Günay was mostly responsible for the model write up and implementation, and Sormunen was responsible for the model evaluation and data pipeline production. Work was equally divided, and done in a good spirit.\\
 
+Christoforidis did not participate in the project, because we could not reach him after the actual project had started. He was still present in making the original project plan. 
+
+\clearpage
 % Import bibliography file %
+
 \bibliography{citations/sources.bib}
 
 \clearpage
